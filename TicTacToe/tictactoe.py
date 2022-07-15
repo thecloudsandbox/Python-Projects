@@ -16,22 +16,14 @@ def player_input():
     #Initial Variables
     
     #Dictionary to hold playing tokens to choose from
-    token_choice = {'X':'','O':''}
+    token_choice = ['X','O']
     
     #List of values to use for input validaton
     input_validation_list = [1,2]
-    
-    #Ask for token choice X or O
-    #Idea for update is to personalize this with formatting
     selection = 0
-    
-    #Player variables
-    player1 = ' '
-    player2 = ' '
-    default_player = player1
-    
+    input_valid_range = range(3)
     #Input validation
-    while selection not in input_validation_list:
+    while selection not in input_validation_list and input_valid_range:
         #Error handling for input
         player_input = input('Please enter 1 for "X" or 2 for "O": ')
         try:
@@ -41,12 +33,14 @@ def player_input():
         
         #Assigning tokens to players
         if selection == 1:
-            token_choice['X'] = player1
-            if default_player == player1:
-                token_choice['O'] = player2
-            else:
-                token_choice['O'] = player1
-                            
-    print(selection)
+            player1 = token_choice[0]
+            if player1 == token_choice[0]:
+                player2 = token_choice[1]
+        elif selection == 2:
+            player1 = token_choice[1]
+            if player1 == token_choice[1]:
+                player2 = token_choice[0]
+                
+    print(player1,player2)
 
 player_input()
