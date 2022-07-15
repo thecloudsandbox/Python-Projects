@@ -13,9 +13,7 @@ def display_board(board):
     print('\t     |     |')
 
 def player_input():
-    #Initial Variables
-    
-    #Dictionary to hold playing tokens to choose from
+    #List to hold playing tokens to choose from
     token_choice = ['X','O']
     
     #List of values to use for input validaton
