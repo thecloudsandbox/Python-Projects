@@ -23,7 +23,7 @@ def player_input():
     
     #Ask for token choice X or O
     #Idea for update is to personalize this with formatting
-    selection = int(input('Please enter 1 for "X" or 2 for "O": '))
+    selection = 0
     
     #Player variables
     player1 = ' '
@@ -32,7 +32,13 @@ def player_input():
     
     #Input validation
     while selection not in input_validation_list:
-        selection = int(input('Please enter 1 for "X" or 2 for "O": '))
+        #Error handling for input
+        player_input = input('Please enter 1 for "X" or 2 for "O": ')
+        try:
+            selection = int(player_input)
+        except ValueError:
+            print('You entered an invalid character: ',player_input,'\n','Please enter 1 for "X" or 2 for "O": ')
+            
         #Check if player selection is valid
         if selection not in input_validation_list:
             print('Invalid choice, please enter 1 for "X" or 2 for "O": ')
