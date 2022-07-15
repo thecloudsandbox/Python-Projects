@@ -13,30 +13,36 @@ def display_board(board):
     print('\t     |     |')
 
 def player_input():
-    #Input Variable
-    #player1_choice = 'PLACEHOLDER'
-    valid_range = range(1,10)
-    input_range = False
-    player_1 = ' '
-    player_2 = ' '
+    #Initial Variables
+    
+    #Dictionary to hold playing tokens to choose from
+    token_choice_store = {'X':'','O':''}
+    
+    #List of values to use for input validaton
+    input_validation_list = [1,2]
+    
+    #Ask for token choice X or O
+    #Idea for update is to personalize this with formatting
+    selection = int(input('Please enter 1 for "X" or 2 for "O": '))
+    
+    #Player variables
+    player1 = ' '
+    player2 = ' '
+    default_player = player1
+    
     #Input validation
-    while player_1.isdigit() == False or input_range == False:
-        
-        #Asking for initial input
-        player_1 = input('Choose a position to place your token')
-        
-        #Check if a number or letter was entered and if not a number print to the screen
-        if player_1.isdigit() == False :
-            print('Invalid choice, choose between 1 - 9')
-            
-        #Checking if input is in range between 1-9
-        if player_1.isdigit():
-            if str(player_1) in valid_range:
-                input_range = True
+    while selection not in input_validation_list:
+        selection = int(input('Please enter 1 for "X" or 2 for "O": '))
+        #Check if player selection is valid
+        if selection not in input_validation_list:
+            print('Invalid choice, please enter 1 for "X" or 2 for "O": ')
+        elif selection == 1:
+            token_choice_store['X'] = player1
+            if default_player == player1:
+                token_choice_store['O'] = player2
             else:
-                print('Number not in range, choose between 1 - 9')
-                
-        
-    print(player_1)
+                token_choice_store['O'] = player1
+                            
+    print(player1)
 
 player_input()
