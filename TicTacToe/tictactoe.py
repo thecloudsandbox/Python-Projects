@@ -16,7 +16,7 @@ def player_input():
     #Initial Variables
     
     #Dictionary to hold playing tokens to choose from
-    token_choice_store = {'X':'','O':''}
+    token_choice = {'X':'','O':''}
     
     #List of values to use for input validaton
     input_validation_list = [1,2]
@@ -37,18 +37,16 @@ def player_input():
         try:
             selection = int(player_input)
         except ValueError:
-            print('You entered an invalid character: ',player_input,'\n','Please enter 1 for "X" or 2 for "O": ')
-            
-        #Check if player selection is valid
-        if selection not in input_validation_list:
-            print('Invalid choice, please enter 1 for "X" or 2 for "O": ')
-        elif selection == 1:
-            token_choice_store['X'] = player1
+            print('You entered an invalid character: ',player_input)
+        
+        #Assigning tokens to players
+        if selection == 1:
+            token_choice['X'] = player1
             if default_player == player1:
-                token_choice_store['O'] = player2
+                token_choice['O'] = player2
             else:
-                token_choice_store['O'] = player1
+                token_choice['O'] = player1
                             
-    print(player1)
+    print(selection)
 
 player_input()
