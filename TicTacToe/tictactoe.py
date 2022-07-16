@@ -17,23 +17,16 @@ def display_board(board):
    
 
 def player_input():
-    #List to hold playing tokens to choose from
-    token_choice = ['X','O']
     marker = ''
-    
+    input_choices = ['1','2']
     #Input validation
-    while marker not in token_choice:
-        #Error handling for input
-        player_input = input('Please enter 1 for "X" or 2 for "O": ').upper()
-        try:
-            marker = int(player_input)
-        except ValueError:
-            print('You entered an invalid character: ',player_input)
-        
-        #Assigning tokens to players
-        if marker == 1:
+    while marker not in input_choices:
+        marker = input('Please enter 1 for "X" or 2 for "O": ')
+        if marker not in input_choices:
+            print('Invalid choice, please enter 1 for "X" or 2 for "O"')
+        elif marker == '1':
             return ('X','O')
-        else:
+        elif marker == '2':
             return ('O','X')
         
 def place_marker(board,marker,position):
